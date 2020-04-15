@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReservaTable extends Migration
+class CreateReservasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateReservaTable extends Migration
      */
     public function up()
     {
-        Schema::create('reserva', function (Blueprint $table) {
+        Schema::create('reservas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('pessoa_id')->index();
             $table->unsignedBigInteger('quarto_id')->index();
-            $table->foreign('pessoa_id')->references('id')->on('pessoa');
-            $table->foreign('quarto_id')->references('id')->on('quarto');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas');
+            $table->foreign('quarto_id')->references('id')->on('quartos');
             $table->date('data_reserva');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by'); 
             $table->timestamps();
         });
-       
     }
 
     /**
@@ -34,6 +33,6 @@ class CreateReservaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reserva');
+        Schema::dropIfExists('reservas');
     }
 }

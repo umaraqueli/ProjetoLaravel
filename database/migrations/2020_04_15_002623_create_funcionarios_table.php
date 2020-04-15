@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuartoTable extends Migration
+class CreateFuncionariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateQuartoTable extends Migration
      */
     public function up()
     {
-        Schema::create('quarto', function (Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('hotel_id')->index();
-            $table->foreign('hotel_id')->references('id')->on('hotel');
-            $table->integer('capacidade');
-            $table->integer('valor');
-            $table->tinyInteger('disponivel');
+            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->string('cargo');
+            $table->string('nome');
+            $table->string('endereco');
+            $table->string('cpf');
+            $table->unique('cpf');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by'); 
             $table->timestamps();
@@ -33,6 +35,6 @@ class CreateQuartoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quarto');
+        Schema::dropIfExists('funcionarios');
     }
 }
