@@ -53,7 +53,6 @@ class HotelController extends Controller
       return redirect()->route('admin.hotels');
     }
 
-}
 
 
 
@@ -104,4 +103,4 @@ class HotelController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-}
+  }

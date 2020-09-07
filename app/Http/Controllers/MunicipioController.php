@@ -14,72 +14,44 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        //
+            $registros = Municipio::all();
+            return view('admin.municipios.index',compact('registros'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function adicionar()
     {
-        //
+      return view('admin.municipios.adicionar');
+    }
+    
+    public function salvar(Request $req)
+    {
+      $dados = $req->all();
+      
+      Municipio::create($dados);
+
+      return redirect()->route('admin.municipios');
+
+    }
+    public function editar($id)
+    {
+      $registro = Municipio::find($id);
+      return view('admin.municipios.editar',compact('registro'));
+    }
+    public function atualizar(Request $req, $id)
+    {
+      $dados = $req->all();
+
+      Muncipio::find($id)->update($dados);
+
+      return redirect()->route('admin.municipios');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function deletar($id)
     {
-        //
+      Municipio::find($id)->delete();
+      return redirect()->route('admin.municipios');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Municipio  $municipio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Municipio $municipio)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Municipio  $municipio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Municipio $municipio)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Municipio  $municipio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Municipio $municipio)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Municipio  $municipio
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Municipio $municipio)
-    {
-        //
-    }
 }

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header>
+  
         <nav class="cor">
             <div class="nav-wrapper">
                 <class="brand-logo"></a>
@@ -24,6 +24,7 @@
                     <li><a href="{{route('site.login')}}">Login</a></li>
                     @else
                     <li><a href="{{route('admin.hotels')}}">Hotel</a></li>
+                    <li><a href="{{route('admin.municipios')}}">Municipio</a></li>
                     <li><a href="#">{{Auth::user()->name}}</a></li>
                     <li><a href="{{ route('site.login.sair') }}">Sair</a></li>
                     @endif
@@ -41,4 +42,3 @@
             <li><a href="{{ route('site.login.sair') }}">Sair</a></li>
             @endif
         </ul>
-    </header>

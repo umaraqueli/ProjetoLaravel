@@ -20,8 +20,6 @@ class CreateHotelsTable extends Migration
             $table->string('nome');
             $table->string('endereço');
             $table->char('localidade');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by'); 
             $table->timestamps();
         });
     }

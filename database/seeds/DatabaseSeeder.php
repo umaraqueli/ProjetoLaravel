@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-      
+        DB::table('users')->insert([
+
+            'name' => 'Admin',
+            'email' => 'admin@hotel.com.br',
+            'password' => Hash::make('users'),
+        ]);
     }
 }

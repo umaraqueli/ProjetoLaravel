@@ -29,4 +29,11 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/admin/hotels/adicionar',['as'=>'admin.hotels.adicionar','uses'=>'HotelController@adicionar']);
     Route::post('/admin/hotels/salvar',['as'=>'admin.hotels.salvar','uses'=>'HotelController@salvar']);
     Route::get('/admin/hotels/editar/{id}',['as'=>'admin.hotels.editar','uses'=>'HotelController@editar']);
+
+    
+    Route::get('/admin/municipios',['as'=>'admin.municipios','uses'=>'MunicipioController@index']);
+    Route::get('/admin/municipios/adicionar',['as'=>'admin.municipios.adicionar','uses'=>'MunicipioController@adicionar']);
+    Route::post('/admin/municipios/salvar',['as'=>'admin.municipios.salvar','uses'=>'MunicipioController@salvar']);
+    Route::get('/admin/municipios/editar/{id}',['as'=>'admin.municipios.editar','uses'=>'MunicipioController@editar']);
 });
+
