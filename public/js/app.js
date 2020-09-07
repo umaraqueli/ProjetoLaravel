@@ -1091,6 +1091,10 @@ var defaults = {
     return status >= 200 && status < 300;
   }
 };
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.slider');
+    var instances = M.Slider.init(elems, options);
+  });
 
 defaults.headers = {
   common: {

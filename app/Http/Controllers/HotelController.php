@@ -14,18 +14,50 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+            $registros = Hotel::all();
+            return view('admin.hotels.index',compact('registros'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function adicionar()
     {
-        //
+      return view('admin.hotels.adicionar');
     }
+    
+    public function salvar(Request $req)
+    {
+      $dados = $req->all();
+      
+      Hotel::create($dados);
+
+      return redirect()->route('admin.hotels');
+
+    }
+    public function editar($id)
+    {
+      $registro = Hotel::find($id);
+      return view('admin.hotels.editar',compact('registro'));
+    }
+    public function atualizar(Request $req, $id)
+    {
+      $dados = $req->all();
+
+      Hotel::find($id)->update($dados);
+
+      return redirect()->route('admin.hotels');
+
+    }
+
+    public function deletar($id)
+    {
+      Hotel::find($id)->delete();
+      return redirect()->route('admin.hotels');
+    }
+
+}
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -55,11 +87,7 @@ class HotelController extends Controller
      * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hotel $hotel)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -67,10 +95,7 @@ class HotelController extends Controller
      * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
-    {
-        //
-    }
+ 
 
     /**
      * Remove the specified resource from storage.
@@ -78,8 +103,5 @@ class HotelController extends Controller
      * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hotel $hotel)
-    {
-        //
-    }
+  
 }

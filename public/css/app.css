@@ -6,7 +6,20 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+.brand-logo{
+  
+    width: 300px;
+    height: 60px;
+    border-right-width: 500px;
+    padding-top: 4px;
+}
 
+.cor{
+
+    color: #212121 ;
+    text:black;
+    background-color: #424242 ;
+}
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
