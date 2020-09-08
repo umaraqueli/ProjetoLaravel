@@ -1,8 +1,9 @@
 @extends('layouts.site')
 
-@section('site_title','Lista de Municipios')
+@section('title_name','Lista de Municipios')
 
 @section('content')
+<br>
   <div class="container">
     <h3 class="center">Lista de Municipios</h3>
     <div class="row">
@@ -17,6 +18,11 @@
             <tr>
               <td>{{ $registro->nome }}</td>
             </tr>
+            <td class="right-align">
+              <a class="btn deep-orange" href="{{ route('admin.municipios.editar',$registro->id) }}">Editar</a>
+              <a class="btn red" href="{{ route('admin.municipios.deletar',$registro->id) }}">Deletar</a>
+            </td>
+          </tr>
           @endforeach
         </tbody>
       </table>
@@ -27,3 +33,5 @@
     </div>
 
   </div>
+  
+  @endsection

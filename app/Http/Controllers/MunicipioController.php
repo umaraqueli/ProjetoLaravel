@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Municipio;
 use Illuminate\Http\Request;
 
@@ -37,13 +38,15 @@ class MunicipioController extends Controller
       $registro = Municipio::find($id);
       return view('admin.municipios.editar',compact('registro'));
     }
+
     public function atualizar(Request $req, $id)
     {
       $dados = $req->all();
 
-      Muncipio::find($id)->update($dados);
+      Municipio::find($id)->update($dados);
 
       return redirect()->route('admin.municipios');
+      
 
     }
 

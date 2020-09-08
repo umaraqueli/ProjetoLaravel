@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Hotel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Municipio;
 
 class HotelController extends Controller
 {
@@ -20,7 +22,9 @@ class HotelController extends Controller
 
     public function adicionar()
     {
-      return view('admin.hotels.adicionar');
+            $municipios = Municipio::all(); 
+    
+            return view('admin.hotels.adicionar',compact('municipios'));
     }
     
     public function salvar(Request $req)
