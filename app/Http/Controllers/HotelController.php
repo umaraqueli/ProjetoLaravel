@@ -22,10 +22,11 @@ class HotelController extends Controller
 
     public function adicionar()
     {
-            $municipios = Municipio::all(); 
-    
-            return view('admin.hotels.adicionar',compact('municipios'));
+      $hotels = Hotel::all();
+      $municipios = Municipio::all();
+      return view('admin.hotels.adicionar',compact('hotels','municipios'));
     }
+    
     
     public function salvar(Request $req)
     {

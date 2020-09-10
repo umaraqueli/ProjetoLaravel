@@ -39,5 +39,13 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/admin/municipios/editar/{id}',['as'=>'admin.municipios.editar','uses'=>'MunicipioController@editar']);
     Route::put('/admin/municipios/atualizar/{id}',['as'=>'admin.municipios.atualizar','uses'=>'MunicipioController@atualizar']);
     Route::get('/admin/municipios/deletar/{id}',['as'=>'admin.municipios.deletar','uses'=>'MunicipioController@deletar']);
+    
+    
+    Route::get('/admin/pessoas',['as'=>'admin.pessoas','uses'=>'PessoaController@index']);
+    Route::get('/admin/pessoas/adicionar',['as'=>'admin.pessoas.adicionar','uses'=>'PessoaController@adicionar']);
+    Route::post('/admin/pessoas/salvar',['as'=>'admin.pessoas.salvar','uses'=>'PessoaController@salvar']);
+    Route::get('/admin/pessoas/editar/{id}',['as'=>'admin.pessoas.editar','uses'=>'PessoaController@editar']);
+    Route::put('/admin/pessoas/atualizar/{id}',['as'=>'admin.pessoas.atualizar','uses'=>'PessoaController@atualizar']);
+    Route::get('/admin/pessoas/deletar/{id}',['as'=>'admin.pessoas.deletar','uses'=>'PessoaController@deletar']);
 });
 

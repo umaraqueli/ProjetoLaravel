@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Pessoa;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class PessoaController extends Controller
 {
@@ -14,39 +16,46 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        //
+            $registros = Pessoa::all();
+            return view('admin.pessoas.index',compact('registros'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function adicionar()
     {
-        //
+        return view('admin.pessoas.adicionar');
+
+    }  
+
+        public function salvar(Request $req)
+    {
+      $dados = $req->all();
+      
+      Pessoa::create($dados);
+
+      return redirect()->route('admin.pessoas');
+
+    }
+    public function editar($id)
+    {
+      $registro = Pessoa::find($id);
+      return view('admin.pessoas.editar',compact('registro'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function atualizar(Request $req, $id)
     {
-        //
+      $dados = $req->all();
+
+      Pessoa::find($id)->update($dados);
+
+      return redirect()->route('admin.pessoas');
+      
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pessoa $pessoa)
+    public function deletar($id)
     {
-        //
+      Pessoa::find($id)->delete();
+      return redirect()->route('admin.pessoas');
     }
 
     /**
