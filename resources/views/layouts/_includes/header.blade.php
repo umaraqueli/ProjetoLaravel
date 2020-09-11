@@ -24,10 +24,15 @@
                     <li></a><a href="/"><i class="material-icons">home</i>Home</a></li>
                     @if(Auth::guest())                    
                     <li><a href="{{route('site.login')}}">Login</a></li>
-                    @else
+                    @elseif(Auth::user()->tipo == 'admin')
                     <li><a href="{{route('admin.hotels')}}">Hotel</a></li>
                     <li><a href="{{route('admin.pessoas')}}">Pessoa</a></li>
+                    <li><a href="{{route('admin.users')}}">Usuário</a></li>
                     <li><a href="{{route('admin.municipios')}}">Municipio ||</a></li> 
+                    <li><a>Bem vindo, {{Auth::user()->name}}</a></li>
+                    <li><a href="{{ route('site.login.sair') }}">Sair</a></li>
+                    @elseif(Auth::user()->tipo == 'comum')
+                    <li><a href="{{route('admin.pessoas')}}">Pessoa</a></li>
                     <li><a>Bem vindo, {{Auth::user()->name}}</a></li>
                     <li><a href="{{ route('site.login.sair') }}">Sair</a></li>
                     @endif

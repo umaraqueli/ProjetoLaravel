@@ -25,18 +25,53 @@ class UserController extends Controller
         $roles = UserRole::getAdminRoleList(Auth::user());
     	return view('auth.register_admin', compact('roles'));
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+            $registros = User::all();
+            return view('admin.users.index',compact('registros'));
     }
 
-    /**
+    public function adicionar()
+    {
+        return view('admin.users.adicionar');
+
+    }  
+
+        public function salvar(Request $req)
+    {
+      $dados = $req->all();
+      
+      User::create($dados);
+
+      return redirect()->route('admin.users');
+
+    }
+    public function editar($id)
+    {
+      $registro = User::find($id);
+      return view('admin.users.editar',compact('registro'));
+    }
+
+    public function atualizar(Request $req, $id)
+    {
+      $dados = $req->all();
+
+      User::find($id)->update($dados);
+
+
+      return redirect()->route('admin.users');
+      
+
+    }
+
+    public function deletar($id)
+    {
+      User::find($id)->delete();
+      return redirect()->route('admin.users');
+    }
+
+
+      /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -64,6 +99,7 @@ class UserController extends Controller
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'email' => $data['tipo'],
             'password' => Hash::make($data['password']),
             'roles' => $data['roles'],
         ]);

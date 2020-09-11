@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
       $dados = $req->all();
       if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['senha']])){
-        return redirect()->route('admin.hotels');
+        return redirect()->route('admin.pessoas');
       }
 
       return redirect()->route('site.login');
@@ -24,6 +24,6 @@ class LoginController extends Controller
     public function sair()
     {
       Auth::logout();
-      return redirect()->route('site.home');
+      return redirect()->route('site.login');
     }
 }

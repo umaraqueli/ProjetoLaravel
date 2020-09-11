@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
 
             'name' => 'Admin',
             'email' => 'admin@hotel.com.br',
-            'password' => Hash::make('users'),
+            'tipo' =>'admin',
+            'password' => Hash::make('admin'),
         ]);
     }
 }
