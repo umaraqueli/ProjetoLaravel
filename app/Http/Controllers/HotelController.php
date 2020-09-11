@@ -22,9 +22,8 @@ class HotelController extends Controller
 
     public function adicionar()
     {
-      $hotels = Hotel::all();
       $municipios = Municipio::all();
-      return view('admin.hotels.adicionar',compact('hotels','municipios'));
+      return view('admin.hotels.adicionar',compact('municipios'));
     }
     
     
@@ -40,7 +39,8 @@ class HotelController extends Controller
     public function editar($id)
     {
       $registro = Hotel::find($id);
-      return view('admin.hotels.editar',compact('registro'));
+      $municipios = Municipio::all();
+      return view('admin.hotels.editar',compact('registro','municipios'));
     }
     public function atualizar(Request $req, $id)
     {
