@@ -57,5 +57,21 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/admin/users/editar/{id}',['as'=>'admin.users.editar','uses'=>'UserController@editar']);
     Route::put('/admin/users/atualizar/{id}',['as'=>'admin.users.atualizar','uses'=>'UserController@atualizar']);
     Route::get('/admin/users/deletar/{id}',['as'=>'admin.users.deletar','uses'=>'UserController@deletar']);
+
+    Route::get('/admin/quartos',['as'=>'admin.quartos','uses'=>'QuartoController@index']);
+    Route::get('/admin/quartos/adicionar',['as'=>'admin.quartos.adicionar','uses'=>'QuartoController@adicionar']);
+    Route::post('/admin/quartos/salvar',['as'=>'admin.quartos.salvar','uses'=>'QuartoController@salvar']);
+    Route::get('/admin/quartos/editar/{id}',['as'=>'admin.quartos.editar','uses'=>'QuartoController@editar']);
+    Route::put('/admin/quartos/atualizar/{id}',['as'=>'admin.quartos.atualizar','uses'=>'QuartoController@atualizar']);
+    Route::get('/admin/quartos/deletar/{id}',['as'=>'admin.quartos.deletar','uses'=>'QuartoController@deletar']);
+
+    
+    Route::get('/admin/reservas',['as'=>'admin.reservas','uses'=>'ReservaController@index']);
+    Route::get('/admin/reservas/adicionar',['as'=>'admin.reservas.adicionar','uses'=>'ReservaController@adicionar']);
+    Route::post('/admin/reservas/salvar',['as'=>'admin.reservas.salvar','uses'=>'ReservaController@salvar']);
+    Route::get('/admin/reservas/editar/{id}',['as'=>'admin.reservas.editar','uses'=>'ReservaController@editar']);
+    Route::put('/admin/reservas/atualizar/{id}',['as'=>'admin.reservas.atualizar','uses'=>'ReservaController@atualizar']);
+    Route::get('/admin/reservas/deletar/{id}',['as'=>'admin.reservas.deletar','uses'=>'ReservaController@deletar']);
+
 });
 

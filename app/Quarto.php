@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quarto extends Model
 {
-    //
+    
+  public $timestamps = false;
+
+
     protected $fillable = [
-        'hotel_id','capacidade','valor','disponivel'       
+        'capacidade','valor','disponivel','hotel_id'      
     ];
     public function hotel()
     {

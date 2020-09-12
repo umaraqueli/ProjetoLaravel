@@ -4,82 +4,63 @@ namespace App\Http\Controllers;
 
 use App\Reserva;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Quarto;
+use App\Pessoa;
+
 
 class ReservaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+            $registros = Reserva::all();
+            return view('admin.reservas.index',compact('registros'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function adicionar()
     {
-        //
+      $quartos = Quarto::all();
+      $pessoas = Pessoa::all();
+      return view('admin.reservas.adicionar',compact('quartos','pessoas'));
+    }
+    
+    
+    public function salvar(Request $req)
+    {
+      $dados = $req->all();
+      
+      Reserva::create($dados);
+
+      return redirect()->route('admin.reservas');
+
+    }
+    public function editar($id)
+    {
+      $registro = Reserva::find($id);
+      $pessoas = Pessoa::find($id);
+      $quartos = Quarto::all();
+      return view('admin.reservas.editar',compact('registro','pessoas','quartos'));
+    }
+    public function atualizar(Request $req, $id)
+    {
+      $dados = $req->all();
+
+      Reserva::find($id)->update($dados);
+
+      return redirect()->route('admin.reservas');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function deletar($id)
     {
-        //
+      Reserva::find($id)->delete();
+      return redirect()->route('admin.reservas');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reserva $reserva)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reserva $reserva)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Reserva $reserva)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Reserva $reserva)
-    {
-        //
-    }
+
+
+
 }

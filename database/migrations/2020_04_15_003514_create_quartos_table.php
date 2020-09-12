@@ -19,7 +19,7 @@ class CreateQuartosTable extends Migration
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->integer('capacidade');
             $table->integer('valor');
-            $table->tinyInteger('disponivel');
+            $table->text('disponivel');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by'); 
             $table->timestamps();

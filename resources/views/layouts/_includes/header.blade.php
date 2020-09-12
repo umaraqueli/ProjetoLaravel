@@ -28,11 +28,17 @@
                     <li><a href="{{route('admin.hotels')}}">Hotel</a></li>
                     <li><a href="{{route('admin.pessoas')}}">Pessoa</a></li>
                     <li><a href="{{route('admin.users')}}">Usuário</a></li>
+                    <li><a href="{{route('admin.quartos')}}">Quarto</a></li>
+                    <li><a href="{{route('admin.reservas')}}">Reservas</a></li>
+
+
                     <li><a href="{{route('admin.municipios')}}">Municipio ||</a></li> 
                     <li><a>Bem vindo, {{Auth::user()->name}}</a></li>
                     <li><a href="{{ route('site.login.sair') }}">Sair</a></li>
                     @elseif(Auth::user()->tipo == 'comum')
                     <li><a href="{{route('admin.pessoas')}}">Pessoa</a></li>
+                    <li><a href="{{route('admin.reservas')}}">Reservas</a></li>
+
                     <li><a>Bem vindo, {{Auth::user()->name}}</a></li>
                     <li><a href="{{ route('site.login.sair') }}">Sair</a></li>
                     @endif

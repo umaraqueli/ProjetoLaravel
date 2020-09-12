@@ -12,7 +12,6 @@
 <div>
 <label>Municipio</label>
 <select name="municipio_id" class="browser-default">
-<option></option>
       @foreach($municipios as $municipio)
       <option value="{{$municipio->id}}" {{ !isset($registro->muncipio_id) ? '' :
       ($registro->municipio_id == $municipio->id ? 'selected' : '') }}>{{$municipio->nome}}</option>

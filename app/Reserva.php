@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
-    //
+  public $timestamps = false;
+
 
     protected $fillable = [
-        'localidade','pessoa_id','quarto_id','data_reserva'       
+        'pessoa_id','quarto_id','data_reserva'       
     ];
     public function pessoa()
     {
