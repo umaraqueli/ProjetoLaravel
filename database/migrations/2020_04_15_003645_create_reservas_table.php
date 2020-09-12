@@ -20,8 +20,10 @@ class CreateReservasTable extends Migration
             $table->foreign('pessoa_id')->references('id')->on('pessoas');
             $table->foreign('quarto_id')->references('id')->on('quartos');
             $table->date('data_reserva');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by'); 
+            $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->foreign('user_id')->references('id')->on('users'); 
+            //$table->unsignedBigInteger('created_by');
+            //$table->unsignedBigInteger('updated_by'); 
             $table->timestamps();
         });
     }

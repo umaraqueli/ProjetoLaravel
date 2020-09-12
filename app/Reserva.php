@@ -10,7 +10,7 @@ class Reserva extends Model
 
 
     protected $fillable = [
-        'pessoa_id','quarto_id','data_reserva'       
+        'pessoa_id','quarto_id','data_reserva','user_id','updated_by'       
     ];
     public function pessoa()
     {
@@ -20,4 +20,9 @@ class Reserva extends Model
     {
       return $this->hasOne('App\Quarto', 'quarto_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    } 
 }

@@ -7,13 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Quarto;
 use App\Pessoa;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 
 class ReservaController extends Controller
 {
     public function index()
     {
+            if (Auth::user()->tipo =='admin'){
             $registros = Reserva::all();
+            }else{
+            $registros = Reserva::where('user_id', Auth::id())->get();}
             return view('admin.reservas.index',compact('registros'));
     }
 
@@ -28,7 +33,7 @@ class ReservaController extends Controller
     public function salvar(Request $req)
     {
       $dados = $req->all();
-      
+      $dados['user_id'] = Auth::id();
       Reserva::create($dados);
 
       return redirect()->route('admin.reservas');
