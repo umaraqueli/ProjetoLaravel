@@ -42,7 +42,7 @@ class ReservaController extends Controller
     public function editar($id)
     {
       $registro = Reserva::find($id);
-      $pessoas = Pessoa::find($id);
+      $pessoas = Pessoa::all();
       $quartos = Quarto::all();
       return view('admin.reservas.editar',compact('registro','pessoas','quartos'));
     }
