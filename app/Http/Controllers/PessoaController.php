@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Pessoa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 
 class PessoaController extends Controller
@@ -14,6 +16,8 @@ class PessoaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
             $registros = Pessoa::all();
@@ -26,10 +30,15 @@ class PessoaController extends Controller
 
     }  
 
-        public function salvar(Request $req)
+    public function salvar(Request $req)
     {
       $dados = $req->all();
-      
+     // $user_id = Auth::user()->id;
+      //$data['user_id'] = auth()->user()->id;
+      //Auth::user()->id;
+     // $data['user_id'] = $model->user_id = auth()->user()->id;
+      //$user_id = Auth::id();
+      $dados['user_id'] = Auth::id();
       Pessoa::create($dados);
 
       return redirect()->route('admin.pessoas');

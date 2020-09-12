@@ -15,7 +15,11 @@
 </div>
 <div class="input-field">
   <input type="text" name="endereco" value="{{isset($registro->endereco) ? $registro->endereco : ''}}">
-  <label>Ednereço</label></input>
+  <label>Endereço</label></input>
+</div>
+<div class="input-field">
+  <input type="text" name="email" value="{{isset($registro->email) ? $registro->email : ''}}">
+  <label>email</label></input>
 </div>
 
 

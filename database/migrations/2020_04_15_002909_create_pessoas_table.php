@@ -20,9 +20,10 @@ class CreatePessoasTable extends Migration
             $table->string('cpf');
             $table->unique('cpf');
             $table->string('idade');
+            $table->string('email');
             $table->string('endereco');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by'); 
+            $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }
