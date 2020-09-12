@@ -25,7 +25,12 @@ class ReservaController extends Controller
     public function adicionar()
     {
       $quartos = Quarto::all();
-      $pessoas = Pessoa::all();
+      //$pessoas = Pessoa::all();
+      //$pessoas = Pessoa::where('user_id', Auth::id())->get();
+      if (Auth::user()->tipo =='admin'){
+        $pessoas = Pessoa::all();
+        }else{
+          $pessoas = Pessoa::where('user_id', Auth::id())->get();}
       return view('admin.reservas.adicionar',compact('quartos','pessoas'));
     }
     
@@ -42,7 +47,13 @@ class ReservaController extends Controller
     public function editar($id)
     {
       $registro = Reserva::find($id);
-      $pessoas = Pessoa::all();
+      //$pessoas = Pessoa::all();
+      //$pessoas = Pessoa::where('user_id', Auth::id())->get();
+      if (Auth::user()->tipo =='admin'){
+        $pessoas = Pessoa::all();
+        }else{
+          $pessoas = Pessoa::where('user_id', Auth::id())->get();}
+
       $quartos = Quarto::all();
       return view('admin.reservas.editar',compact('registro','pessoas','quartos'));
     }

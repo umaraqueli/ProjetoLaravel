@@ -20,7 +20,13 @@ class PessoaController extends Controller
      
     public function index()
     {
-            $registros = Pessoa::all();
+          //  $registros = Pessoa::all();
+            if (Auth::user()->tipo =='admin'){
+              $registros = Pessoa::all();
+              }else{
+              $registros = Pessoa::where('user_id', Auth::id())->get();}
+
+           //   $registros = Pessoa::where('user_id', Auth::id())->get();
             return view('admin.pessoas.index',compact('registros'));
     }
 
