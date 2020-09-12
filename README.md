@@ -10,11 +10,14 @@ Voltado para o ramo hoteleiro.
 • Necessário ter ambiente configurado com  Laravel e composer e banco de dados MySql.
 • Em seu PC local baixe o projeto usando `git clone`;
 • Digite: `composer install` para instalar as bibliotecas;
-• Crie um banco chamado projeto no Mysql,
+• Crie um banco chamado projeto no Mysql;
+• Rode o comando php artisan migrate para criação das tabelas no banco.
+
+
 ### CONVENÇÕES
 Convenções adotadas:
 * Todas as `classes` devem ser representadas por um substantivos e não um verbo: Usuarios, Reservas, Pessoas etc;
-* Utilizados campos no banco em portugues.
+* Utilizados campos no banco de dados em portugues.
 
 
 ### BIBLIOTECAS DO PROJETO
